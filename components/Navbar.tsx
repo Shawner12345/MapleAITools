@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, LogIn, LogOut, Settings, Gift } from 'lucide-react';
+import { Menu, X, LogIn, LogOut, Settings, Gift, Users } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { signOut } from '../lib/firebase';
 
@@ -139,6 +139,13 @@ const Navbar: React.FC<NavbarProps> = ({
             {/* Desktop Navigation */}
             <div className="flex items-center space-x-4">
               <button
+                onClick={() => setActiveComponent('TheLads')}
+                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors font-semibold"
+              >
+                <Users className="w-5 h-5" />
+                The Lads
+              </button>
+              <button
                 onClick={() => setActiveComponent('GiftIdeas')}
                 className="flex items-center gap-2 text-gray-600 hover:text-red-600 transition-colors"
               >
@@ -183,6 +190,15 @@ const Navbar: React.FC<NavbarProps> = ({
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4 space-y-4">
+            <MobileNavLink onClick={() => {
+              setActiveComponent('TheLads');
+              setIsMenuOpen(false);
+            }}>
+              <div className="flex items-center gap-2 font-semibold">
+                <Users className="w-5 h-5" />
+                The Lads
+              </div>
+            </MobileNavLink>
             <MobileNavLink onClick={() => {
               setActiveComponent('GiftIdeas');
               setIsMenuOpen(false);

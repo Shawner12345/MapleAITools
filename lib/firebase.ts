@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  signInWithEmailAndPassword, 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged,
@@ -13,13 +13,14 @@ import {
   GoogleAuthProvider,
   signInWithPopup
 } from 'firebase/auth';
-import { 
+import {
   getFirestore,
   initializeFirestore,
   persistentLocalCache,
   persistentSingleTabManager,
   CACHE_SIZE_UNLIMITED
 } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -56,6 +57,9 @@ try {
 }
 
 export { db };
+
+// Initialize Firebase Storage
+export const storage = getStorage(app);
 
 // Initialize Google Auth Provider
 const googleProvider = new GoogleAuthProvider();

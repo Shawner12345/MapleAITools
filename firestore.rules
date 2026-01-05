@@ -35,5 +35,13 @@ service cloud.firestore {
     match /budgets/{userId} {
       allow read, write: if isOwner(userId);
     }
+
+    // The Lads social feed posts
+    match /ladsPosts/{postId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid;
+    }
   }
 }

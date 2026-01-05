@@ -17,6 +17,7 @@ import AuthModal from './components/Auth/AuthModal';
 import ProfilePage from './components/Profile/ProfilePage';
 import EmailVerification from './components/EmailVerification';
 import ContactForm from './components/ContactForm';
+import { SocialFeed } from './components/TheLads/SocialFeed';
 import { AuthProvider } from './contexts/AuthContext';
 import { ActivityProvider } from './contexts/ActivityContext';
 import { UserPlanProvider } from './contexts/UserPlanContext';
@@ -123,6 +124,8 @@ function App() {
 
   const renderActiveComponent = () => {
     switch (activeComponent) {
+      case 'TheLads':
+        return <SocialFeed />;
       case 'GiftIdeas':
         return <GiftIdeas />;
       case 'MealPlanner':
